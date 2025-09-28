@@ -1,76 +1,68 @@
-# RAG-document-assistant
-Full-stack RAG application using React, Node Js, OpenAI, and Pinecone to enable intelligent document chat.
+# 📚 RAG Document Assistant
 
-# React + TypeScript + Vite
+An **AI-powered document assistant** that lets users upload files, converts them into embeddings, stores them in **Pinecone**, and answers questions using **Retrieval-Augmented Generation (RAG)** powered by **OpenAI GPT**.  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Built with **React (frontend)**, **Express (backend)**, **OpenAI API**, and **Pinecone Vector DB**.
 
-Currently, two official plugins are available:
+---
+## 📖 About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The **RAG Document Assistant** is a full-stack project that demonstrates how to combine **Large Language Models (LLMs)** with external knowledge bases using **Retrieval-Augmented Generation (RAG)**.  
 
-## React Compiler
+The goal of this project is to let users **chat with their own documents**:  
+- Upload files (PDF, DOCX, TXT)  
+- Convert them into **embeddings** using OpenAI  
+- Store them in **Pinecone** for efficient semantic search  
+- Ask questions and get **context-aware answers** with source references 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
+- 📂 Upload PDF, DOCX, or TXT documents
+- 🔍 Automatic text extraction + smart chunking
+- 🧠 Embedding generation with OpenAI
+- 📦 Vector storage in Pinecone
+- 💬 Ask questions and get contextual answers
+- 📑 Source references for transparency
+- 🎨 Clean Material-UI interface
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📸 Screenshots
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Home Page
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Chat Interface
+<img width="1478" height="755" alt="Screenshot 2025-09-28 at 5 04 46 PM" src="https://github.com/user-attachments/assets/14b9d9cc-c9af-464e-a39c-636f7bf491a8" />
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** React, Material-UI, Axios
+- **Backend:** Express, Node.js, Multer
+- **AI:** OpenAI GPT, OpenAI Embeddings
+- **Vector DB:** Pinecone
+- **Utilities:** pdfjs-dist, mammoth (for text extraction)
+- **Deployment:** Docker / Vercel / Render (future)
+
+---
+
+## ⚙️ Setup Instructions
+
+### Clone the Repo
+```bash
+- git clone https://github.com/<your-username>/RAG-document-assistant.git
+- cd RAG-document-assistant
+- npm install
+- npm run dev
+- cd server
+- npm install
+- npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+server running on localhost:5000
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Usage
+ - Upload a document (PDF/DOCX/TXT).
+ - Wait for embeddings to be processed and stored in Pinecone.
+ - Ask questions in the chat interface.
+ - Get contextual answers with source references.
+ 
