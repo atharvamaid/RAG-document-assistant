@@ -1,3 +1,6 @@
+# RAG-document-assistant
+Full-stack RAG application using React, Node Js, OpenAI, and Pinecone to enable intelligent document chat.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
