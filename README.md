@@ -18,7 +18,7 @@ The goal of this project is to let users **chat with their own documents**:
 ## ✨ Features
 - 📂 Upload PDF, DOCX, or TXT documents
 - 🔍 Automatic text extraction + smart chunking
-- 🧠 Embedding generation with OpenAI
+- 🧠 Embedding generation with OpenAI API
 - 📦 Vector storage in Pinecone
 - 💬 Ask questions and get contextual answers
 - 📑 Source references for transparency
