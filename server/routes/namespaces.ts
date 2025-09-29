@@ -30,7 +30,6 @@ router.delete("/:namespace", async (req, res) => {
   if (!namespace) return res.status(400).json({ error: "Namespace required" });
 
   try {
-    // Prefer deleteNamespace if available
     const deletedNamespace = await index.deleteNamespace(namespace);
 
     return res.json({ success: true, deletedNamespace });
