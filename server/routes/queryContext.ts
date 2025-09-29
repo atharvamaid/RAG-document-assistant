@@ -1,5 +1,7 @@
-import { openai, index, embedChunks } from "../utils/commonUtils.js";
+import { embedChunks } from "../utils/commonUtils.js";
 import express from "express";
+import { index } from "../utils/pineconeClient.js";
+import { openai } from "../utils/openAIClient.js";
 
 const router = express.Router();
 

@@ -1,16 +1,15 @@
 import fs from "fs/promises";
 import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 import mammoth from "mammoth";
-import OpenAI from "openai";
-import { Pinecone } from "@pinecone-database/pinecone";
-import "dotenv/config";
+import { index } from "./pineconeClient.js";
+import { openai } from "./openAIClient.js";
 
 export async function extractText(path: string, mimetype?: string): Promise<string> {
   const buffer = await fs.readFile(path);
 
   // --- PDF ---
   if (mimetype?.includes("pdf")) {
-    // 👇 Convert Buffer → Uint8Array
+    // Convert Buffer → Uint8Array
     const pdfData = new Uint8Array(buffer);
 
     const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
@@ -51,11 +50,6 @@ export function chunkText(
   return chunks;
 }
 
-const token = process.env.OPENAI_API_KEY;
-const endpoint = "https://models.github.ai/inference";
-
-export const openai = new OpenAI({ baseURL: endpoint, apiKey: token });
-
 export async function embedChunks(chunks: string[]): Promise<number[][]> {
   const resp = await openai.embeddings.create({
     model: "text-embedding-3-small",
@@ -63,9 +57,6 @@ export async function embedChunks(chunks: string[]): Promise<number[][]> {
   });
   return resp.data.map((d) => d.embedding);
 }
-
-const pc = new Pinecone({ apiKey: process.env.PINECONE_API_KEY ?? "" });
-export const index = pc.index(process.env.PINECONE_INDEX!);
 
 export async function upsertEmbeddings(
   chunks: string[],
