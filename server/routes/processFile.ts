@@ -20,9 +20,13 @@ router.post("/process-file", upload.single("file"), async (req, res) => {
       .digest("hex")
       .slice(0, 10);
     const namespace = `file-${hash}`;
+
     const text = await extractText(req.file.path, req.file.mimetype);
+
     const chunks = chunkText(text, 1000, 200);
+
     const embeddings = await embedChunks(chunks);
+
     const vectors = embeddings.map((values, i) => ({
       id: `${namespace}-chunk-${i}`,
       values,
@@ -34,7 +38,7 @@ router.post("/process-file", upload.single("file"), async (req, res) => {
     }));
 
     await index.namespace(namespace).upsert(vectors);
-
+    
     res.json({ success: true, chunks: chunks.length });
   } catch (err) {
     console.error(err);
