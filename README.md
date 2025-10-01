@@ -14,7 +14,7 @@ The goal of this project is to let users **chat with their own documents**:
 - Convert them into **embeddings** using OpenAI  
 - Store them in **Pinecone** for efficient semantic search  
 - Ask questions and get **context-aware answers** with source references
-- Add different documents and it will identify
+- Add different documents and it will identify the context, will save the context for future usage aswell.
 
 ## ✨ Features
 - 📂 Upload PDF, DOCX, or TXT documents
