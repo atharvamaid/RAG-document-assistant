@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 
     // Normalize
     const namespaces =
-      resp?.namespaces ? Object.keys(resp.namespaces) : resp ?? [];
+      resp?.namespaces ? resp.namespaces.map((n) => n.name) : resp ?? [];
 
     return res.json({ namespaces });
   } catch (err) {

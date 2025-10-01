@@ -5,6 +5,7 @@ import uploadRoutes from "./routes/upload.js";
 import processFileRoutes from "./routes/processFile.js";
 import queryContextRoutes from "./routes/queryContext.js";
 import { modelName, openai } from "./utils/openAIClient.js";
+import namespaceRoutes from "./routes/namespaces.js";
 
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api", uploadRoutes);
 app.use("/api", processFileRoutes);
 app.use("/api", queryContextRoutes);
+app.use("/api/namespaces", namespaceRoutes);
 
 app.post("/api/chat", async (req: Request, res: Response) => {
   const { message } = req.body;

@@ -11,6 +11,7 @@ import {
 import { sendChatMessage } from "../services/chat-service";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import NamespaceSelector from "./NamespaceSelector";
 
 interface Message {
   sender: "user" | "bot";
@@ -22,6 +23,7 @@ const ChatComponent: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [selectedNamespace, setSelectedNamespace] = useState<string | null>(null);
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -31,7 +33,7 @@ const ChatComponent: React.FC = () => {
     setLoading(true);
 
     try {
-      const res = await sendChatMessage(newMessage.text);
+      const res = await sendChatMessage(newMessage.text, "");
       setMessages((prev) => [...prev, { sender: "bot", text: res.answer }]);
     } catch (err) {
       setMessages((prev) => [
@@ -46,6 +48,7 @@ const ChatComponent: React.FC = () => {
 
   return (
     <Box p={3} border="1px solid #ddd" borderRadius={2}>
+      <NamespaceSelector selected={selectedNamespace} onSelect={setSelectedNamespace}/>
       <Typography variant="h6" gutterBottom>
         Chat
       </Typography>

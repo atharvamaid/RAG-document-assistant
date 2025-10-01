@@ -7,19 +7,19 @@ const router = express.Router();
 
 router.post("/query", async (req, res) => {
   try {
-    const { question } = req.body;
+    const { question, namespace } = req.body;
     if (!question) return res.status(400).json({ error: "Question required" });
 
     // Step 1: Embed the question
     const [queryEmbedding] = await embedChunks([question]);
 
+    const nameSpace = index.namespace(namespace);
     // Step 2: Query Pinecone
-    const results = await index.query({
+    const results = await nameSpace.query({
       topK: 3,
       vector: queryEmbedding as number[],
       includeMetadata: true,
     });
-
     // Step 3: Build context string
     const context = results.matches
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
