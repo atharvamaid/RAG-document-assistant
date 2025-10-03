@@ -52,4 +52,8 @@ router.post("/query", async (req, res) => {
   }
 });
 
+router.get(/query, async (req, res) => {
+           console.log("get query route")
+})
+
 export default router;
