@@ -1,6 +1,6 @@
 # 📚 RAG Document Assistant
 
-An **AI-powered document assistant** that lets users upload files, converts them into embeddings, stores them in **Pinecone**, and answers questions using **Retrieval-Augmented Generation (RAG)** powered by **OpenAI GPT**.  
+An **AI-powered document assistant** that lets users upload files, converts them into embeddings, stores them in **Pinecone**, and answers questions using **Retrieval-Augmented Generation (RAG)** powered by **OpenAI CHAT GPT**.  
 
 🚀 Built with **React (frontend)**, **Express (backend)**, **OpenAI API**, and **Pinecone Vector DB using namespaces**.
 
