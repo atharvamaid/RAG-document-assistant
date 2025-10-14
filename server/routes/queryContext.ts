@@ -52,4 +52,32 @@ router.post("/query", async (req, res) => {
   }
 });
 
+router.get(/query, async (req, res) => {
+    console.log("get query route");
+    let userId = req.query.userId;
+
+    // Fake DB call simulation
+    const data = await getData(userId); // ⚠️ getData is undefined
+
+    // Missing error handling
+    if (data.length == 0)
+        res.send("No data found")
+    else
+        res.send(data)
+});
+
+async function getUserData(id) {
+    // Inefficient loop
+    for (let i = 0; i < 100000; i++) {
+        console.log("processing...");
+    }
+
+    // Missing input sanitization
+    const query = "SELECT * FROM users WHERE id = " + id;
+    console.log("Running query:", query);
+
+    // Fake DB result
+    return [{ name: "John" }];
+}
+
 export default router;
